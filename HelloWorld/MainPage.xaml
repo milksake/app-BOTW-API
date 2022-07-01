@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HelloWorld.MainPage">
+
+    <StackLayout>
+        <Frame BackgroundColor="Crimson" Padding="24" CornerRadius="0">
+            <Label Text="Hyrule Compendium" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+        <Label Text="Info on all interactive items from Breath of the Wild" FontSize="Title" Padding="30,10,30,10"/>
+        <Button Text="Get a random creature or item" Clicked="Button_Clicked"/>
+        <Label Text="{Binding str}" Padding="30,10,30,0"/>
+        <SearchBar SearchCommand="{Binding SearchCommand}"
+                   x:Name="search"
+                   SearchCommandParameter="{Binding Text, Source={x:Reference search}}"
+                   Placeholder="Enter name of the creature/item"
+                   TextColor="White" PlaceholderColor="Gray"/>
+        <Label Padding="0,10,0,0"/>
+        <Image Source="{Binding data.data.image}" Scale="1.5"/>
+        <Label Padding="30,50,30,0">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="Name: " FontAttributes="Bold"/>
+                        <Span Text="{Binding data.data.name}"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label Padding="30,20,30,0">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="Category: " FontAttributes="Bold"/>
+                        <Span Text="{Binding data.data.category}"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label Text="Description: " FontAttributes="Bold" Padding="30,20,30,0"/>
+        <Label Text="{Binding data.data.description}" Padding="30,0,30,0"/>
+    </StackLayout>
+
+</ContentPage>
